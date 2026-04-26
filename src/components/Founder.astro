@@ -1,0 +1,69 @@
+---
+import GumpelPortrait from "./svg/GumpelPortrait.astro";
+import Sparkle from "./svg/Sparkle.astro";
+import Heart from "./svg/Heart.astro";
+import Star from "./svg/Star.astro";
+---
+
+<section id="founder" class="relative py-24 md:py-32 px-6 md:px-10 bg-petu-cream overflow-hidden">
+  <Sparkle class="absolute top-20 right-[12%] w-7 opacity-70" color="#ffd23f" />
+  <Heart class="absolute bottom-24 left-[8%] w-8 opacity-60" />
+
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12 petu-reveal">
+      <span class="inline-block px-4 py-1.5 mb-4 rounded-full bg-petu-yellow-200 text-petu-ink text-base font-semibold">
+        Office of the Founder
+      </span>
+      <h2 class="font-display font-bold text-4xl md:text-6xl text-petu-ink mb-4">
+        Mr. Gumpel.
+      </h2>
+    </div>
+
+    <div class="petu-reveal relative bg-white rounded-[var(--radius-blob-lg)] border-2 border-petu-pink-100 shadow-kawaii overflow-hidden grid md:grid-cols-[280px_1fr] gap-0">
+      <div class="bg-gradient-to-br from-petu-pink-100 via-petu-yellow-100 to-petu-blue-100 p-8 md:p-10 flex flex-col items-center justify-center relative">
+        <Sparkle class="absolute top-4 right-4 w-5 opacity-80" color="#ff95c2" />
+        <Star class="absolute bottom-6 left-5 w-5 opacity-80" />
+        <div id="founder-portrait" class="w-44 md:w-52 cursor-pointer">
+          <GumpelPortrait class="w-full h-auto" />
+        </div>
+        <div class="mt-4 text-center">
+          <div class="font-display font-bold text-petu-ink text-lg">David Gumpel</div>
+          <div class="text-base text-petu-ink-soft">Founder · Honorary Horn-Bearer</div>
+        </div>
+      </div>
+
+      <div class="p-8 md:p-10">
+        <blockquote class="font-display text-xl md:text-2xl text-petu-ink leading-snug mb-5 border-l-4 border-petu-pink-300 pl-5">
+          "I am, and have always been, on sabbatical with a unicorn."
+          <footer class="mt-2 text-base font-body font-normal text-petu-ink-soft not-italic">
+            Source: D. Gumpel, Annual General Meeting, 1903
+          </footer>
+        </blockquote>
+
+        <div class="space-y-4 text-base text-petu-ink-soft leading-relaxed">
+          <p>
+            David Gumpel founded the Society in <strong class="text-petu-ink">1824</strong>, in Geneva,
+            after observing a souvenir vendor sell what he later described in his journals as
+            <em>"a dignity, in tin form, for two francs."</em> The vendor reportedly did not understand the
+            complaint. Gumpel did not press the matter. He went home and drafted the Horn Charter instead.
+          </p>
+          <p>
+            By trade he was a <strong class="text-petu-ink">glitter auditor</strong>; a profession that no
+            longer formally exists, though several PETU members are working to bring it back. By temperament
+            he was patient. By correspondence, vanishingly rare.
+          </p>
+          <p>
+            He has not been seen in public since 1948. The Society maintains, with conviction, that he is
+            well, and that the unicorn is well, and that they are together somewhere quiet.
+          </p>
+        </div>
+
+        <div class="mt-7 flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-full bg-petu-pink-100 text-petu-pink-600 text-base font-semibold">Drafted the Horn Charter, 1824</span>
+          <span class="px-3 py-1.5 rounded-full bg-petu-blue-100 text-petu-blue-500 text-base font-semibold">Last sighted 1948</span>
+          <span class="px-3 py-1.5 rounded-full bg-petu-yellow-200 text-petu-ink text-base font-semibold">Office hours: by horn-mail</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

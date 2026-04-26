@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgOg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff8f5" />
+      <stop offset="50%" stop-color="#ffe1ec" />
+      <stop offset="100%" stop-color="#cfe7ff" />
+    </linearGradient>
+    <linearGradient id="hornOg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fff5b8" />
+      <stop offset="55%" stop-color="#ffd23f" />
+      <stop offset="100%" stop-color="#ff95c2" />
+    </linearGradient>
+    <linearGradient id="maneOg" x1="0" y1="0" x2="0.15" y2="1">
+      <stop offset="0%" stop-color="#a8d4ff" />
+      <stop offset="35%" stop-color="#ffb6d5" />
+      <stop offset="70%" stop-color="#ffe066" />
+      <stop offset="100%" stop-color="#ff95c2" />
+    </linearGradient>
+    <linearGradient id="tailOg" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffb6d5" />
+      <stop offset="50%" stop-color="#ffe066" />
+      <stop offset="100%" stop-color="#a8d4ff" />
+    </linearGradient>
+    <linearGradient id="innerEarOg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffb6d5" />
+      <stop offset="100%" stop-color="#ff95c2" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bgOg)" />
+
+  <ellipse cx="180" cy="120" rx="110" ry="40" fill="#fffaf6" opacity="0.7" />
+  <ellipse cx="1020" cy="100" rx="140" ry="44" fill="#ffe1ec" opacity="0.85" />
+  <ellipse cx="1080" cy="520" rx="120" ry="36" fill="#fff5b8" opacity="0.6" />
+  <ellipse cx="120" cy="540" rx="90" ry="30" fill="#cfe7ff" opacity="0.7" />
+
+  <path d="M 130 200 L 134 218 L 152 222 L 134 226 L 130 244 L 126 226 L 108 222 L 126 218 Z" fill="#ffe066" opacity="0.85" />
+  <path d="M 1060 240 L 1064 256 L 1078 260 L 1064 264 L 1060 280 L 1056 264 L 1042 260 L 1056 256 Z" fill="#a8d4ff" opacity="0.85" />
+  <circle cx="220" cy="450" r="6" fill="#ffb6d5" />
+  <circle cx="80" cy="340" r="5" fill="#ffe066" />
+  <circle cx="1130" cy="380" r="6" fill="#ff95c2" />
+  <circle cx="950" cy="80" r="5" fill="#a8d4ff" />
+
+  <g font-family="'Fredoka', 'Quicksand', system-ui, -apple-system, sans-serif">
+    <rect x="80" y="80" width="280" height="48" rx="24" fill="#fff5b8" />
+    <text x="220" y="113" font-size="20" font-weight="600" fill="#3a2a3f" text-anchor="middle">An Independent Society · Est. 1824</text>
+
+    <text x="80" y="220" font-size="80" font-weight="700" fill="#3a2a3f">PETU</text>
+    <text x="80" y="266" font-size="26" font-weight="600" fill="#6b5470">People for Ethical Treatment of Unicorns</text>
+
+    <text x="80" y="380" font-size="78" font-weight="700" fill="#3a2a3f">The unicorn</text>
+    <text x="80" y="460" font-size="78" font-weight="700" fill="#3a2a3f">is not a <tspan fill="#ff7eb8">pattern.</tspan></text>
+
+    <text x="80" y="540" font-size="22" font-weight="500" fill="#6b5470">A satirical society. Geneva, 1824.</text>
+  </g>
+
+  <g transform="translate(720, 120) scale(1.15)">
+    <ellipse cx="170" cy="296" rx="125" ry="6" fill="#ffcbe0" opacity="0.5" />
+
+    <path
+      d="M 56 196
+         C 22 184 10 220 30 240
+         C 8 254 26 282 56 268
+         C 50 292 86 290 84 260
+         C 104 252 96 216 88 200 Z"
+      fill="url(#tailOg)"
+      stroke="#f25aa1"
+      stroke-width="2"
+      stroke-linejoin="round"
+    />
+
+    <rect x="90" y="232" width="22" height="56" rx="10" fill="#ffe1ec" stroke="#3a2a3f" stroke-width="2" />
+    <ellipse cx="101" cy="288" rx="15" ry="5.5" fill="#ff95c2" stroke="#3a2a3f" stroke-width="2" />
+    <rect x="186" y="232" width="22" height="56" rx="10" fill="#ffe1ec" stroke="#3a2a3f" stroke-width="2" />
+    <ellipse cx="197" cy="288" rx="15" ry="5.5" fill="#ff95c2" stroke="#3a2a3f" stroke-width="2" />
+
+    <ellipse cx="148" cy="218" rx="92" ry="48" fill="#fffaf6" stroke="#3a2a3f" stroke-width="2.5" />
+    <ellipse cx="148" cy="240" rx="62" ry="12" fill="#ffe1ec" opacity="0.55" />
+
+    <path
+      d="M 196 180 Q 204 156 226 152 Q 248 154 248 178 Q 240 206 216 210 Q 196 210 196 180 Z"
+      fill="#fffaf6"
+      stroke="#3a2a3f"
+      stroke-width="2.5"
+      stroke-linejoin="round"
+    />
+
+    <rect x="118" y="234" width="24" height="58" rx="11" fill="#fffaf6" stroke="#3a2a3f" stroke-width="2.5" />
+    <ellipse cx="130" cy="292" rx="16" ry="6" fill="#ffb6d5" stroke="#3a2a3f" stroke-width="2" />
+    <rect x="212" y="234" width="24" height="58" rx="11" fill="#fffaf6" stroke="#3a2a3f" stroke-width="2.5" />
+    <ellipse cx="224" cy="292" rx="16" ry="6" fill="#ffb6d5" stroke="#3a2a3f" stroke-width="2" />
+
+    <path
+      d="M 226 104 Q 234 74 262 72 Q 290 74 302 90 Q 312 108 316 128 Q 320 144 326 152 Q 340 162 334 178 Q 322 188 304 188 Q 282 192 258 188 Q 234 184 222 168 Q 212 144 216 118 Q 222 102 226 104 Z"
+      fill="#fffaf6"
+      stroke="#3a2a3f"
+      stroke-width="2.5"
+      stroke-linejoin="round"
+    />
+    <ellipse cx="318" cy="174" rx="14" ry="9" fill="#ffe1ec" opacity="0.65" />
+    <path d="M 296 158 Q 304 168 308 184" stroke="#3a2a3f" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.35" />
+
+    <path d="M 246 80 Q 234 50 246 42 Q 260 48 264 80 Z" fill="#fffaf6" stroke="#3a2a3f" stroke-width="2" stroke-linejoin="round" />
+    <path d="M 250 76 Q 244 56 252 50 Q 258 56 260 74 Z" fill="url(#innerEarOg)" opacity="0.85" />
+    <path d="M 270 78 Q 264 38 280 32 Q 296 40 296 78 Z" fill="#fffaf6" stroke="#3a2a3f" stroke-width="2" stroke-linejoin="round" />
+    <path d="M 276 74 Q 272 46 282 42 Q 290 48 292 72 Z" fill="url(#innerEarOg)" opacity="0.85" />
+
+    <path
+      d="M 254 86 Q 264 82 274 86 L 264 30 Z"
+      fill="url(#hornOg)"
+      stroke="#f25aa1"
+      stroke-width="2"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M 256 70 Q 263 66 270 70 M 258 56 Q 263 52 268 56 M 260 42 Q 263 40 266 42"
+      stroke="#f25aa1"
+      stroke-width="1.5"
+      fill="none"
+      stroke-linecap="round"
+    />
+
+    <path
+      d="M 248 88 Q 234 100 224 122 Q 214 142 206 158 Q 192 170 174 178 Q 144 184 110 188 Q 78 192 56 200 Q 38 212 32 232 Q 54 232 70 224 Q 60 248 86 240 Q 76 264 106 254 Q 118 246 138 244 Q 168 240 192 232 Q 214 220 224 198 Q 232 174 236 148 Q 240 118 244 92 Z"
+      fill="url(#maneOg)"
+      stroke="#f25aa1"
+      stroke-width="2"
+      stroke-linejoin="round"
+    />
+
+    <path d="M 248 90 Q 240 106 246 130 Q 234 132 242 146 Q 256 150 264 138 Q 270 116 268 92 Z" fill="url(#maneOg)" stroke="#f25aa1" stroke-width="2" stroke-linejoin="round" />
+
+    <ellipse cx="278" cy="134" rx="9" ry="12" fill="#3a2a3f" />
+    <circle cx="280" cy="129" r="4" fill="#fffaf6" />
+    <circle cx="275" cy="139" r="2" fill="#fffaf6" />
+    <path d="M 278 121 L 273 116 M 286 122 L 287 116 M 270 124 L 265 122" stroke="#3a2a3f" stroke-width="1.8" stroke-linecap="round" fill="none" />
+
+    <ellipse cx="296" cy="162" rx="10" ry="5.5" fill="#ffb6d5" opacity="0.78" />
+    <path d="M 318 158 Q 320 154 324 156 Q 326 162 322 164 Q 318 162 318 158 Z" fill="#3a2a3f" />
+    <path d="M 322 174 Q 314 180 304 174" stroke="#3a2a3f" stroke-width="2" fill="none" stroke-linecap="round" />
+  </g>
+</svg>

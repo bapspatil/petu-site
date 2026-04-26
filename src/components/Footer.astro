@@ -1,0 +1,144 @@
+---
+import Heart from "./svg/Heart.astro";
+---
+
+<footer class="relative bg-petu-ink text-petu-pink-100 py-14 md:py-20 px-6 md:px-10 overflow-hidden">
+  <div class="absolute -top-1 left-0 right-0 h-6 bg-petu-cream" style="border-radius: 0 0 50% 50% / 0 0 100% 100%;"></div>
+
+  <div class="max-w-6xl mx-auto relative">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-12">
+      <div class="col-span-2 md:col-span-1">
+        <div class="flex items-center gap-2 mb-3">
+          <Heart class="w-7" color="#ffb6d5" />
+          <span class="font-display font-bold text-2xl text-petu-pink-100">PETU</span>
+        </div>
+        <p class="text-base text-petu-pink-100/70 leading-relaxed">
+          People for Ethical Treatment of Unicorns. An independent society for image-rights and
+          iconographic restraint. Est. Geneva, 1824.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-display font-bold text-petu-pink-100 mb-3 text-base">Sections</h4>
+        <ul class="space-y-2 text-base">
+          <li><a href="#crisis" class="text-petu-pink-100/70 hover:text-petu-pink-300 transition-colors">The Saturation Audit</a></li>
+          <li><a href="#why" class="text-petu-pink-100/70 hover:text-petu-pink-300 transition-colors">If We Do Not Stop</a></li>
+          <li><a href="#get-involved" class="text-petu-pink-100/70 hover:text-petu-pink-300 transition-colors">The PETU Protocol</a></li>
+          <li><a href="#founder" class="text-petu-pink-100/70 hover:text-petu-pink-300 transition-colors">Mr. Gumpel</a></li>
+          <li><a href="#partnership" class="text-petu-pink-100/70 hover:text-petu-pink-300 transition-colors">On PETE</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-display font-bold text-petu-pink-100 mb-3 text-base">Contact</h4>
+        <ul class="space-y-2 text-base">
+          <li>
+            <button
+              type="button"
+              data-petu-action
+              data-action-label="General Email"
+              class="text-petu-pink-100/70 hover:text-petu-pink-300 transition-colors text-left bg-transparent border-0 p-0 cursor-pointer font-body text-base"
+            >
+              hello@petu.info
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              data-petu-action
+              data-action-label="Press Email"
+              class="text-petu-pink-100/70 hover:text-petu-pink-300 transition-colors text-left bg-transparent border-0 p-0 cursor-pointer font-body text-base"
+            >
+              Press: press@petu.info
+            </button>
+          </li>
+          <li><span class="text-petu-pink-100/70">Horn-mail: address unknown</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-display font-bold text-petu-pink-100 mb-3 text-base">Legal</h4>
+        <ul class="space-y-2 text-base">
+          <li>
+            <button
+              type="button"
+              data-petu-action
+              data-action-label="Privacy Policy"
+              class="text-petu-pink-100/70 hover:text-petu-pink-300 transition-colors text-left bg-transparent border-0 p-0 cursor-pointer font-body text-base"
+            >
+              Privacy Policy
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              data-petu-action
+              data-action-label="Cookie Policy"
+              class="text-petu-pink-100/70 hover:text-petu-pink-300 transition-colors text-left bg-transparent border-0 p-0 cursor-pointer font-body text-base"
+            >
+              Cookie Policy
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              data-petu-action
+              data-action-label="Press Kit"
+              class="text-petu-pink-100/70 hover:text-petu-pink-300 transition-colors text-left bg-transparent border-0 p-0 cursor-pointer font-body text-base"
+            >
+              Press Kit
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-petu-pink-100/15 pt-7 flex flex-col md:flex-row md:items-center justify-between gap-4 text-base text-petu-pink-100/60">
+      <p class="leading-relaxed">
+        A satirical nonprofit parody. <strong class="text-petu-pink-200">No unicorns (or humans) were harmed.</strong>
+        <br class="hidden md:inline" />
+        © 2026 PETU. All horns reserved.
+      </p>
+      <p class="md:text-right">
+        Crafted with care by
+        <a href="https://bapspatil.com" target="_blank" rel="noopener noreferrer" class="text-petu-pink-200 hover:text-petu-pink-300 underline underline-offset-2 transition-colors">
+          Bapusaheb Patil
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<div
+  id="petu-modal"
+  class="fixed inset-0 z-50 hidden items-center justify-center px-6 py-10 bg-petu-ink/40 backdrop-blur-sm"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="petu-modal-title"
+>
+  <div class="petu-modal-card relative w-full max-w-md bg-white rounded-[var(--radius-blob-lg)] border-2 border-petu-pink-200 shadow-kawaii p-8 text-center">
+    <button
+      type="button"
+      data-petu-modal-close
+      aria-label="Close"
+      class="absolute top-3 right-3 w-9 h-9 rounded-full bg-petu-pink-100 hover:bg-petu-pink-200 text-petu-ink font-bold text-lg flex items-center justify-center transition-colors"
+    >
+      ×
+    </button>
+    <div class="text-5xl mb-3" aria-hidden="true">🦄</div>
+    <h3 id="petu-modal-title" data-petu-modal-title class="font-display font-bold text-2xl text-petu-ink mb-2">
+      Noted, with thanks.
+    </h3>
+    <p data-petu-modal-body class="text-base text-petu-ink-soft leading-relaxed mb-6">
+      Your gesture has been recorded in our archive (which is satirical and, for our purposes,
+      sufficient). The Society thanks you.
+    </p>
+    <button
+      type="button"
+      data-petu-modal-close
+      class="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-petu-pink-500 hover:bg-petu-pink-600 text-white font-semibold shadow-kawaii transition-colors"
+    >
+      Understood
+    </button>
+  </div>
+</div>

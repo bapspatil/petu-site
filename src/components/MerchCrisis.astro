@@ -1,0 +1,100 @@
+---
+import MerchItem from "./svg/MerchItem.astro";
+import UnicornSad from "./svg/UnicornSad.astro";
+import Sparkle from "./svg/Sparkle.astro";
+
+const rooms = [
+  {
+    icon: "pillow" as const,
+    name: "The Bedroom",
+    count: 47,
+    inventory: "Bedding (×3 sets), wall art (×6), plush (×11), one (1) lampshade, one (1) light switch plate, posters even she has stopped looking at.",
+  },
+  {
+    icon: "mug" as const,
+    name: "The Kitchen",
+    count: 12,
+    inventory: "Mugs (×8, three of them in active rotation), magnets, a cutting board, a dishrag the dog refuses to acknowledge, one ice cube tray.",
+  },
+  {
+    icon: "lipbalm" as const,
+    name: "The Bathroom",
+    count: 6,
+    inventory: "Bubble bath, a soap dispenser, two toothbrushes, the shower curtain accent panel, a towel that has been washed too many times.",
+  },
+  {
+    icon: "sticker" as const,
+    name: "The Stationery Drawer",
+    count: 134,
+    inventory: "Stickers (×91), notebooks (×6), pens (×14), washi tape (×5 rolls), greeting cards purchased and never sent (×18).",
+  },
+  {
+    icon: "shirt" as const,
+    name: "The Closet",
+    count: 9,
+    inventory: "T-shirts (×4), socks (×2 pair), two onesies, and a pair of slippers that nobody in the household has admitted to owning.",
+  },
+  {
+    icon: "lunchbox" as const,
+    name: "The Car (Glove Box Only)",
+    count: 3,
+    inventory: "A retractable sunshade, an air freshener no longer producing scent, the emergency snack pouch, itself decorated.",
+  },
+];
+---
+
+<section id="crisis" class="relative py-24 md:py-32 px-6 md:px-10 bg-petu-cream overflow-hidden">
+  <Sparkle class="absolute top-12 right-[8%] w-6 opacity-60" color="#ffb6d5" />
+  <Sparkle class="absolute bottom-20 left-[10%] w-7 opacity-60" color="#a8d4ff" />
+
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14 petu-reveal">
+      <span class="inline-block px-4 py-1.5 mb-4 rounded-full bg-petu-pink-100 text-petu-pink-600 text-base font-semibold">
+        Field Report · 2026
+      </span>
+      <h2 class="font-display font-bold text-4xl md:text-6xl text-petu-ink mb-4">
+        The <span class="text-petu-pink-500">Saturation Audit.</span>
+      </h2>
+      <p class="text-base text-petu-ink-soft max-w-2xl mx-auto leading-relaxed">
+        We surveyed 1,200 households. We counted every unicorn we saw. The numbers below are a single
+        average home. We have not slept since.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-14 petu-stagger">
+      {rooms.map((room) => (
+        <div class="petu-card bg-white border-2 border-petu-pink-100 rounded-[var(--radius-blob)] p-5 md:p-6 shadow-kawaii hover:-translate-y-1 transition-transform">
+          <div class="flex items-start gap-4 mb-3">
+            <div class="shrink-0 w-20 h-20 rounded-2xl bg-petu-pink-50 flex items-center justify-center">
+              <MerchItem variant={room.icon} class="w-16 h-16" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="font-display font-bold text-petu-ink text-lg leading-tight">{room.name}</div>
+              <div class="flex items-baseline gap-2 mt-1">
+                <span class="font-display font-bold text-3xl text-petu-pink-500">{room.count}</span>
+                <span class="text-base text-petu-ink-soft">unicorns counted</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-base text-petu-ink-soft leading-snug">{room.inventory}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="petu-reveal relative bg-gradient-to-br from-petu-pink-100 via-petu-yellow-100 to-petu-blue-100 rounded-[var(--radius-blob-lg)] p-8 md:p-12 grid md:grid-cols-[auto_1fr] gap-8 items-center">
+      <div id="crisis-mascot" class="w-44 md:w-56 mx-auto md:mx-0 shrink-0">
+        <UnicornSad class="w-full h-auto" />
+      </div>
+      <div class="text-center md:text-left">
+        <p class="font-display text-2xl md:text-3xl text-petu-ink leading-snug font-medium mb-3">
+          "She has been printed onto 412,000 individual mugs.
+          <br class="hidden md:inline" />
+          She has not been asked once."
+        </p>
+        <p class="text-base text-petu-ink-soft">
+          Source: Subject 0341 · case file restricted, paraphrased with permission
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

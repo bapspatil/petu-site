@@ -1,0 +1,89 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+---
+<svg
+  class={className}
+  viewBox="0 0 400 400"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Kawaii portrait of David Gumpel"
+>
+  <!-- shirt (navy chore jacket) -->
+  <path fill="#1f2a4a" d="M 50 400 L 50 330 Q 50 278 112 266 Q 200 254 288 266 Q 350 278 350 330 L 350 400 Z" />
+  <!-- v-neck opening, skin peeking through -->
+  <path fill="#fce7d6" d="M 174 268 L 200 308 L 226 268 Q 214 270 200 270 Q 186 270 174 268 Z" />
+  <!-- collar fold -->
+  <path fill="none" stroke="#0e1830" stroke-width="3" stroke-linecap="round" d="M 174 268 L 200 308 L 226 268" />
+  <!-- shirt button -->
+  <circle cx="200" cy="350" r="4.5" fill="#0e1830" />
+
+  <!-- neck -->
+  <path fill="#fce7d6" d="M 170 240 Q 170 275 200 280 Q 230 275 230 240 Z" />
+  <!-- neck shadow -->
+  <path fill="#e8c4a0" opacity="0.45" d="M 170 270 Q 200 280 230 270 L 230 280 L 170 280 Z" />
+
+  <!-- face -->
+  <ellipse cx="200" cy="180" rx="92" ry="105" fill="#fce7d6" />
+
+  <!-- ears -->
+  <ellipse cx="110" cy="195" rx="13" ry="20" fill="#fce7d6" />
+  <ellipse cx="290" cy="195" rx="13" ry="20" fill="#fce7d6" />
+  <ellipse cx="112" cy="200" rx="5" ry="11" fill="#e8c4a0" opacity="0.5" />
+  <ellipse cx="288" cy="200" rx="5" ry="11" fill="#e8c4a0" opacity="0.5" />
+  <!-- earring on right ear -->
+  <circle cx="288" cy="218" r="3.6" fill="#cfd6e4" stroke="#3a2a3f" stroke-width="0.8" />
+
+  <!-- hair: short, swept across, undercut hint -->
+  <path fill="#c9a06b" d="M 108 175 Q 94 74 200 72 Q 308 76 292 175 Q 290 144 278 128 Q 268 118 252 122 Q 232 104 200 102 Q 172 102 150 112 Q 132 118 122 130 Q 110 144 108 175 Z" />
+  <!-- hair sweep highlight (the lighter top, the side-part) -->
+  <path fill="#dbb78a" d="M 145 128 Q 180 104 228 110 Q 258 116 272 134 Q 242 122 214 122 Q 178 124 152 132 Q 142 134 145 128 Z" />
+  <!-- side fade (tighter shaved sides hint) -->
+  <path fill="#a8855c" opacity="0.65" d="M 108 178 Q 112 200 132 205 Q 116 195 110 180 Z" />
+  <path fill="#a8855c" opacity="0.65" d="M 292 178 Q 288 200 268 205 Q 284 195 290 180 Z" />
+
+  <!-- light beard / scruff on jaw -->
+  <path fill="#a8855c" opacity="0.42" d="M 130 218 Q 132 268 200 282 Q 268 268 270 218 Q 252 235 230 240 Q 200 250 170 240 Q 148 235 130 218 Z" />
+
+  <!-- cheek blush -->
+  <ellipse cx="148" cy="218" rx="13" ry="8" fill="#ffb6d5" opacity="0.55" />
+  <ellipse cx="252" cy="218" rx="13" ry="8" fill="#ffb6d5" opacity="0.55" />
+
+  <!-- eyebrows (animatable: raised on hover/click) -->
+  <g data-gumpel-brows>
+    <path d="M 154 167 Q 172 159 190 167" stroke="#8a6840" stroke-width="6" fill="none" stroke-linecap="round" />
+    <path d="M 210 167 Q 228 159 246 167" stroke="#8a6840" stroke-width="6" fill="none" stroke-linecap="round" />
+  </g>
+
+  <!-- left eye (blue iris, dark pupil, kawaii catchlight) -->
+  <g data-gumpel-eye="left">
+    <ellipse cx="172" cy="190" rx="8" ry="10" fill="#3a2a3f" />
+    <ellipse cx="172" cy="190" rx="5" ry="6.5" fill="#6ba3d6" />
+    <ellipse cx="172" cy="191" rx="2.5" ry="3.5" fill="#1a1d2e" />
+    <circle cx="174" cy="187" r="2" fill="#fffaf6" />
+  </g>
+
+  <!-- right eye -->
+  <g data-gumpel-eye="right">
+    <ellipse cx="228" cy="190" rx="8" ry="10" fill="#3a2a3f" />
+    <ellipse cx="228" cy="190" rx="5" ry="6.5" fill="#6ba3d6" />
+    <ellipse cx="228" cy="191" rx="2.5" ry="3.5" fill="#1a1d2e" />
+    <circle cx="230" cy="187" r="2" fill="#fffaf6" />
+  </g>
+
+  <!-- mustache -->
+  <path fill="#a8855c" d="M 165 232 Q 178 224 196 228 Q 200 230 204 228 Q 222 224 235 232 Q 228 240 210 237 Q 200 235 190 237 Q 172 240 165 232 Z" />
+
+  <!-- mouth: default closed-mouth smile -->
+  <g data-gumpel-mouth-default>
+    <path d="M 182 247 Q 200 258 218 247" stroke="#3a2a3f" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- mouth: bigger open grin (revealed on hover/click) -->
+  <g data-gumpel-mouth-grin opacity="0">
+    <path d="M 174 245 Q 200 272 226 245 Q 200 256 174 245 Z" fill="#3a2a3f" />
+    <path d="M 182 250 Q 200 264 218 250 Q 200 257 182 250 Z" fill="#fffaf6" />
+  </g>
+</svg>

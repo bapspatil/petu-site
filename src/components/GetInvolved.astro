@@ -1,0 +1,107 @@
+---
+import Sparkle from "./svg/Sparkle.astro";
+import Heart from "./svg/Heart.astro";
+
+const protocol = [
+  {
+    step: "01",
+    title: "Conduct a Home Audit",
+    badge: "Free · 30 min",
+    badgeColor: "bg-petu-yellow-300 text-petu-ink",
+    body: "Walk every room. Count every unicorn. Sit with the number. We do not judge the number; but the number, we suspect, will judge you.",
+    cta: "Get the Audit Sheet",
+  },
+  {
+    step: "02",
+    title: "Sign the Single-Surface Pledge",
+    badge: "Free",
+    badgeColor: "bg-petu-pink-200 text-petu-pink-600",
+    body: "Limit yourself to one (1) unicorn-bearing object per room going forward. The pillow, the mug, the towel: pick one. Mourn briefly. Move on.",
+    cta: "Sign the Pledge",
+  },
+  {
+    step: "03",
+    title: "Endow a Glade",
+    badge: "$24 · One-time",
+    badgeColor: "bg-petu-blue-400 text-white",
+    body: "Underwrite the planting of one (1) wildflower meadow in a location undisclosed even to PETU. You will never see it. No one will. That is the point.",
+    cta: "Endow",
+  },
+  {
+    step: "04",
+    title: "Underwrite a Pamphlet",
+    badge: "$7/mo",
+    badgeColor: "bg-petu-pink-500 text-white",
+    body: "Subsidize the printing and quiet placement of pamphlets that very gently scold gift shops. Includes one (1) pamphlet per quarter, mailed to your home.",
+    cta: "Underwrite",
+  },
+];
+---
+
+<section id="get-involved" class="relative py-24 md:py-32 px-6 md:px-10 bg-petu-pink-50 overflow-hidden">
+  <Sparkle class="absolute top-12 left-[6%] w-7 opacity-60" />
+  <Sparkle class="absolute bottom-32 right-[8%] w-8 opacity-70" color="#a8d4ff" />
+  <Heart class="absolute top-1/2 right-[4%] w-9 opacity-60" />
+
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14 petu-reveal">
+      <span class="inline-block px-4 py-1.5 mb-4 rounded-full bg-petu-pink-200 text-petu-pink-600 text-base font-semibold">
+        For Concerned Persons
+      </span>
+      <h2 class="font-display font-bold text-4xl md:text-6xl text-petu-ink mb-4">
+        The <span class="text-petu-pink-500">PETU</span> Protocol.
+      </h2>
+      <p class="text-base text-petu-ink-soft max-w-2xl mx-auto leading-relaxed">
+        A four-step program for individual recovery and collective restraint. Begin at one. End at four.
+        Skip none. (You may, regrettably, return to one as needed.)
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-12 petu-stagger">
+      {protocol.map((t) => (
+        <div class="petu-card relative bg-white rounded-[var(--radius-blob-lg)] p-6 md:p-8 border-2 border-petu-pink-100 shadow-kawaii flex flex-col gap-4 hover:-translate-y-1 transition-transform">
+          <div class="absolute -top-4 left-6 font-display font-bold text-petu-pink-200 text-5xl leading-none select-none" aria-hidden="true">
+            {t.step}
+          </div>
+          <div class="flex items-start justify-between gap-3 mt-3">
+            <h3 class="font-display font-bold text-2xl text-petu-ink leading-tight">{t.title}</h3>
+            <span class={`shrink-0 inline-block px-3 py-1 rounded-full text-base font-bold ${t.badgeColor}`}>
+              {t.badge}
+            </span>
+          </div>
+          <p class="text-base text-petu-ink-soft leading-relaxed flex-1">{t.body}</p>
+          <button
+            type="button"
+            data-petu-action
+            data-action-label={t.title}
+            class="self-start inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-petu-pink-100 hover:bg-petu-pink-200 text-petu-pink-600 font-semibold transition-colors"
+          >
+            {t.cta}
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      ))}
+    </div>
+
+    <div class="petu-reveal bg-gradient-to-br from-petu-yellow-100 via-petu-pink-100 to-petu-blue-100 rounded-[var(--radius-blob-lg)] p-8 md:p-10 text-center">
+      <h3 class="font-display font-bold text-2xl md:text-3xl text-petu-ink mb-2">
+        Or contribute directly.
+      </h3>
+      <p class="text-base text-petu-ink-soft mb-5 max-w-xl mx-auto">
+        Funds are routed to glade endowment, pamphlet printing, and the Society's modest archival
+        operation in a temperature-controlled room above a Geneva pâtisserie.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <button type="button" data-petu-action data-action-label="$7 Contribution" class="px-7 py-3 rounded-full bg-white hover:bg-petu-pink-100 border-2 border-petu-pink-300 text-petu-pink-600 font-bold shadow-kawaii transition-colors">
+          $7
+        </button>
+        <button type="button" data-petu-action data-action-label="$24 Contribution" class="px-7 py-3 rounded-full bg-white hover:bg-petu-blue-100 border-2 border-petu-blue-300 text-petu-blue-500 font-bold shadow-kawaii-blue transition-colors">
+          $24
+        </button>
+        <button type="button" data-petu-action data-action-label="Custom Contribution" class="px-7 py-3 rounded-full bg-petu-pink-500 hover:bg-petu-pink-600 text-white font-bold shadow-kawaii transition-colors">
+          Other amount
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

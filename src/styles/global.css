@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --color-petu-cream: #fff8f5;
+  --color-petu-pink-50: #fff0f6;
+  --color-petu-pink-100: #ffe1ec;
+  --color-petu-pink-200: #ffcbe0;
+  --color-petu-pink-300: #ffb6d5;
+  --color-petu-pink-400: #ff95c2;
+  --color-petu-pink-500: #ff7eb8;
+  --color-petu-pink-600: #f25aa1;
+  --color-petu-blue-100: #e3f1ff;
+  --color-petu-blue-200: #cfe7ff;
+  --color-petu-blue-300: #a8d4ff;
+  --color-petu-blue-400: #7eb8ff;
+  --color-petu-blue-500: #5a9bff;
+  --color-petu-yellow-100: #fff5b8;
+  --color-petu-yellow-200: #ffeb85;
+  --color-petu-yellow-300: #ffe066;
+  --color-petu-yellow-400: #ffd23f;
+  --color-petu-mint-200: #d4f5e0;
+  --color-petu-lavender-200: #e8d8ff;
+  --color-petu-ink: #3a2a3f;
+  --color-petu-ink-soft: #6b5470;
+
+  --font-display: "Fredoka", "Comic Sans MS", system-ui, sans-serif;
+  --font-body: "Quicksand", system-ui, sans-serif;
+
+  --radius-blob: 2rem;
+  --radius-blob-lg: 2.5rem;
+
+  --shadow-kawaii: 0 8px 0 0 rgba(255, 126, 184, 0.18);
+  --shadow-kawaii-blue: 0 8px 0 0 rgba(126, 184, 255, 0.22);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-petu-cream);
+  color: var(--color-petu-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: var(--color-petu-pink-300);
+  color: var(--color-petu-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

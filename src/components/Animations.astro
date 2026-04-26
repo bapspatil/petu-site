@@ -1,0 +1,377 @@
+---
+---
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---- Hero mascot bob ----
+  const mascot = document.getElementById("hero-mascot");
+  if (mascot && !reduceMotion) {
+    gsap.to(mascot, {
+      y: -14,
+      duration: 2.6,
+      ease: "sine.inOut",
+      repeat: -1,
+      yoyo: true,
+    });
+    gsap.to(mascot, {
+      rotation: 3,
+      duration: 4.2,
+      ease: "sine.inOut",
+      repeat: -1,
+      yoyo: true,
+      transformOrigin: "50% 80%",
+    });
+  }
+
+  // ---- Hero mascot blink on hover ----
+  if (mascot && !reduceMotion) {
+    const leftEye = mascot.querySelector<SVGGElement>('[data-petu-eye="left"]');
+    const rightEye = mascot.querySelector<SVGGElement>('[data-petu-eye="right"]');
+    let blinking = false;
+    const blink = () => {
+      if (blinking || !leftEye || !rightEye) return;
+      blinking = true;
+      gsap.to(leftEye, {
+        keyframes: [
+          { scaleY: 0.05, duration: 0.09, ease: "power2.in" },
+          { scaleY: 1, duration: 0.13, ease: "power2.out" },
+        ],
+        svgOrigin: "358 395",
+        onComplete: () => {
+          blinking = false;
+        },
+      });
+      gsap.to(rightEye, {
+        keyframes: [
+          { scaleY: 0.05, duration: 0.09, ease: "power2.in" },
+          { scaleY: 1, duration: 0.13, ease: "power2.out" },
+        ],
+        svgOrigin: "408 395",
+      });
+    };
+    mascot.addEventListener("mouseenter", blink);
+    mascot.addEventListener("click", blink);
+  }
+
+  // ---- Sad unicorn mischievous wink (hover and click) ----
+  const crisisMascot = document.getElementById("crisis-mascot");
+  if (crisisMascot && !reduceMotion) {
+    const sleepyRight = crisisMascot.querySelector<SVGPathElement>("[data-petu-sleepy-right]");
+    const mischief = crisisMascot.querySelector<SVGGElement>("[data-petu-mischief]");
+    if (sleepyRight && mischief) {
+      gsap.set(mischief, { transformOrigin: "50% 50%", svgOrigin: "408 395", scale: 0.4 });
+      let clickResetTimer: number | undefined;
+
+      const openWink = () => {
+        gsap.to(sleepyRight, { opacity: 0, duration: 0.12, ease: "power1.out" });
+        gsap.to(mischief, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.32,
+          ease: "back.out(2.4)",
+          svgOrigin: "408 395",
+        });
+      };
+      const closeWink = () => {
+        gsap.to(mischief, {
+          opacity: 0,
+          scale: 0.4,
+          duration: 0.18,
+          ease: "power1.in",
+          svgOrigin: "408 395",
+        });
+        gsap.to(sleepyRight, { opacity: 1, duration: 0.22, delay: 0.08, ease: "power1.out" });
+      };
+
+      crisisMascot.addEventListener("mouseenter", () => {
+        window.clearTimeout(clickResetTimer);
+        openWink();
+      });
+      crisisMascot.addEventListener("mouseleave", closeWink);
+      crisisMascot.addEventListener("click", () => {
+        window.clearTimeout(clickResetTimer);
+        openWink();
+        clickResetTimer = window.setTimeout(closeWink, 1100);
+      });
+    }
+  }
+
+  // ---- Founder portrait: gentle sway + Gumpel reaction (eyebrow raise + grin) ----
+  const founderPortrait = document.getElementById("founder-portrait");
+  if (founderPortrait && !reduceMotion) {
+    gsap.to(founderPortrait, {
+      rotation: 4,
+      duration: 5,
+      ease: "sine.inOut",
+      repeat: -1,
+      yoyo: true,
+      transformOrigin: "50% 80%",
+    });
+
+    const brows = founderPortrait.querySelector<SVGGElement>("[data-gumpel-brows]");
+    const mouthDefault = founderPortrait.querySelector<SVGGElement>("[data-gumpel-mouth-default]");
+    const mouthGrin = founderPortrait.querySelector<SVGGElement>("[data-gumpel-mouth-grin]");
+
+    if (brows && mouthDefault && mouthGrin) {
+      gsap.set(mouthGrin, { transformOrigin: "50% 50%", svgOrigin: "200 256", scale: 0.6 });
+      let gumpelClickReset: number | undefined;
+
+      const reactGumpel = () => {
+        gsap.to(brows, { y: -7, duration: 0.25, ease: "back.out(2.2)" });
+        gsap.to(mouthDefault, { opacity: 0, duration: 0.12, ease: "power1.out" });
+        gsap.to(mouthGrin, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.3,
+          ease: "back.out(2.2)",
+          svgOrigin: "200 256",
+        });
+      };
+      const restGumpel = () => {
+        gsap.to(brows, { y: 0, duration: 0.32, ease: "power2.out" });
+        gsap.to(mouthGrin, {
+          opacity: 0,
+          scale: 0.6,
+          duration: 0.18,
+          ease: "power1.in",
+          svgOrigin: "200 256",
+        });
+        gsap.to(mouthDefault, { opacity: 1, duration: 0.22, delay: 0.06, ease: "power1.out" });
+      };
+
+      founderPortrait.addEventListener("mouseenter", () => {
+        window.clearTimeout(gumpelClickReset);
+        reactGumpel();
+      });
+      founderPortrait.addEventListener("mouseleave", restGumpel);
+      founderPortrait.addEventListener("click", () => {
+        window.clearTimeout(gumpelClickReset);
+        reactGumpel();
+        gumpelClickReset = window.setTimeout(restGumpel, 1200);
+      });
+    }
+  }
+
+  // ---- Floating sparkles ----
+  const sparkles = document.querySelectorAll<HTMLElement>(".petu-sparkle");
+  if (!reduceMotion) {
+    sparkles.forEach((el, i) => {
+      gsap.to(el, {
+        y: "-=18",
+        duration: 2 + (i % 4) * 0.4,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+        delay: i * 0.15,
+      });
+      gsap.to(el, {
+        rotation: 360,
+        duration: 9 + (i % 3) * 2,
+        ease: "none",
+        repeat: -1,
+        transformOrigin: "50% 50%",
+      });
+    });
+  }
+
+  // ---- Slow-floating clouds ----
+  const floats = document.querySelectorAll<HTMLElement>(".petu-float-slow");
+  if (!reduceMotion) {
+    floats.forEach((el, i) => {
+      gsap.to(el, {
+        x: i % 2 === 0 ? "+=18" : "-=18",
+        duration: 6 + i,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
+    });
+  }
+
+  // ---- Section reveal on scroll ----
+  document.querySelectorAll<HTMLElement>(".petu-reveal").forEach((el) => {
+    if (reduceMotion) {
+      gsap.set(el, { opacity: 1, y: 0 });
+      return;
+    }
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 28 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
+  });
+
+  // ---- Stagger reveal for card grids ----
+  document.querySelectorAll<HTMLElement>(".petu-stagger").forEach((container) => {
+    const cards = container.querySelectorAll<HTMLElement>(".petu-card");
+    if (!cards.length) return;
+    if (reduceMotion) {
+      gsap.set(cards, { opacity: 1, y: 0 });
+      return;
+    }
+    gsap.fromTo(
+      cards,
+      { opacity: 0, y: 28, scale: 0.96 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.6,
+        ease: "back.out(1.4)",
+        stagger: 0.08,
+        scrollTrigger: {
+          trigger: container,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
+  });
+
+  // ---- Counter tween on enter ----
+  document.querySelectorAll<HTMLElement>("[data-counter]").forEach((el) => {
+    const target = Number(el.dataset.target ?? "0");
+    const suffix = el.dataset.suffix ?? "";
+    if (reduceMotion) {
+      el.textContent = `${target.toLocaleString()}${suffix}`;
+      return;
+    }
+    const obj = { val: 0 };
+    ScrollTrigger.create({
+      trigger: el,
+      start: "top 92%",
+      once: true,
+      onEnter: () => {
+        gsap.to(obj, {
+          val: target,
+          duration: 1.6,
+          ease: "power2.out",
+          onUpdate: () => {
+            el.textContent = `${Math.round(obj.val).toLocaleString()}${suffix}`;
+          },
+        });
+      },
+    });
+  });
+
+  // ---- Satirical donation/action modal ----
+  const modal = document.getElementById("petu-modal");
+  const modalTitle = modal?.querySelector<HTMLElement>("[data-petu-modal-title]");
+  const modalBody = modal?.querySelector<HTMLElement>("[data-petu-modal-body]");
+
+  const ACTION_MESSAGES: Record<string, { title: string; body: string }> = {
+    "Conduct a Home Audit": {
+      title: "The audit sheet is yours.",
+      body: "Print it, walk every room, and count without flinching. The Society does not call to follow up; the Society, however, will know.",
+    },
+    "Sign the Single-Surface Pledge": {
+      title: "Pledge received. Quietly.",
+      body: "You are now bound to one (1) unicorn-bearing object per room. We require no proof, only that, in the matter of the pillow vs. the mug, you choose.",
+    },
+    "Endow a Glade": {
+      title: "A meadow has been notionally planted.",
+      body: "Your $24 has been routed to a wildflower meadow in an undisclosed location. You will never see it; neither will we. That is the arrangement.",
+    },
+    "Underwrite a Pamphlet": {
+      title: "You are now a Pamphleteer.",
+      body: "$7/month underwrites the printing and quiet placement of pamphlets that very gently scold gift shops. Your first arrives by post; eventually.",
+    },
+    "$7 Contribution": {
+      title: "$7, gratefully unrecorded.",
+      body: "A modest, dignified sum. Funds are nominally routed to the archive above the pâtisserie. We accept no real payments; the gesture is what we keep.",
+    },
+    "$24 Contribution": {
+      title: "$24, gratefully unrecorded.",
+      body: "A handsome figure, traditionally associated with the planting of one (1) meadow. We accept no real payments; the gesture, however, is filed with care.",
+    },
+    "Custom Contribution": {
+      title: "An amount of your choosing.",
+      body: "The Society does not require a specific number, only that the number was considered. We accept no real payments; the contemplation, however, is logged.",
+    },
+    "Privacy Policy": {
+      title: "On your privacy.",
+      body: "We collect nothing; we store nothing; we could not identify you in a lineup of two. Your data is yours; ours is mostly handwritten and kept in a drawer.",
+    },
+    "Cookie Policy": {
+      title: "On cookies.",
+      body: "We set no tracking cookies. We do, however, accept biscuits, which the Geneva office takes with tea at four. The address, regrettably, is in the drawer.",
+    },
+    "Press Kit": {
+      title: "Press inquiries.",
+      body: "The kit comprises one (1) 1903 photograph of Mr. Gumpel, our charter, and a single high-resolution unicorn. Write to press@petu.info; we will, eventually, reply.",
+    },
+    "General Email": {
+      title: "Write to us, by all means.",
+      body: "Email reaches the Geneva office reliably enough; we reply when we can, though the post sometimes overtakes us. Address: hello@petu.info. Brevity is appreciated; sincerity, more so.",
+    },
+    "Press Email": {
+      title: "Press inquiries, in writing.",
+      body: "Send to press@petu.info. Specify deadline and outlet; we will, eventually, reply with a quote, the press kit, or a polite suggestion that you write about something else.",
+    },
+  };
+
+  function openModal(label: string) {
+    if (!modal) return;
+    const message = ACTION_MESSAGES[label];
+    if (modalTitle) modalTitle.textContent = message?.title ?? "Noted, with thanks.";
+    if (modalBody)
+      modalBody.textContent =
+        message?.body ??
+        "Your gesture has been recorded in our archive (which is satirical and, for our purposes, sufficient). The Society thanks you.";
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+    document.body.style.overflow = "hidden";
+    if (!reduceMotion) {
+      const card = modal.querySelector<HTMLElement>(".petu-modal-card");
+      if (card) {
+        gsap.fromTo(
+          card,
+          { scale: 0.85, opacity: 0, y: 12 },
+          { scale: 1, opacity: 1, y: 0, duration: 0.35, ease: "back.out(1.6)" }
+        );
+      }
+    }
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll<HTMLElement>("[data-petu-action]").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const label = btn.dataset.actionLabel ?? "Your contribution";
+      openModal(label);
+    });
+  });
+
+  document.querySelectorAll<HTMLElement>("[data-petu-modal-close]").forEach((btn) => {
+    btn.addEventListener("click", closeModal);
+  });
+
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
+  });
+</script>

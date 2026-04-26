@@ -1,0 +1,59 @@
+---
+import Sparkle from "./svg/Sparkle.astro";
+import Heart from "./svg/Heart.astro";
+---
+
+<section id="partnership" class="relative py-24 md:py-32 px-6 md:px-10 bg-gradient-to-br from-petu-blue-100 via-petu-pink-50 to-petu-yellow-100 overflow-hidden">
+  <Sparkle class="absolute top-16 left-[14%] w-7 opacity-70" />
+  <Sparkle class="absolute bottom-20 right-[16%] w-6 opacity-70" color="#a8d4ff" />
+
+  <div class="max-w-4xl mx-auto text-center">
+    <div class="petu-reveal">
+      <span class="inline-block px-4 py-1.5 mb-4 rounded-full bg-white/80 text-petu-blue-500 text-base font-semibold">
+        An Acknowledgement
+      </span>
+      <h2 class="font-display font-bold text-4xl md:text-6xl text-petu-ink mb-5">
+        On the Subject of <span class="text-petu-blue-500">PETE.</span>
+      </h2>
+      <p class="text-base text-petu-ink-soft max-w-2xl mx-auto leading-relaxed mb-10">
+        We are not the same organization. We share a planet. We share, occasionally, a lawyer.
+        Their concern is <strong>labor</strong>. Ours is <strong>iconography</strong>. The two
+        do touch, but only at the corners.
+        <br /><br />
+        We endorse them anyway.
+      </p>
+    </div>
+
+    <div class="petu-reveal bg-white rounded-[var(--radius-blob-lg)] border-2 border-petu-pink-100 shadow-kawaii p-8 md:p-12 text-left md:text-center">
+      <div class="flex items-center justify-center gap-4 md:gap-6 mb-6">
+        <div class="font-display font-bold text-3xl md:text-4xl text-petu-pink-500">PETU</div>
+        <div class="relative" aria-hidden="true">
+          <Heart class="w-8 md:w-10" />
+          <div class="absolute -top-2 -right-2 w-3 h-3 rounded-full bg-petu-yellow-300"></div>
+        </div>
+        <div class="font-display font-bold text-3xl md:text-4xl text-petu-blue-500">PETE</div>
+      </div>
+
+      <p class="font-display text-xl md:text-2xl text-petu-ink mb-3 text-center">
+        People for Ethical Treatment of Elves
+      </p>
+      <p class="text-base text-petu-ink-soft mb-7 max-w-xl mx-auto leading-relaxed text-center">
+        Founded 1823 (one year before us, a fact we do not dwell on). PETE advocates for the working
+        conditions, fair compensation, and labor rights of elves in the Northern workshop economy. Their
+        work is real, urgent, and outside our particular jurisdiction.
+      </p>
+
+      <div class="text-center">
+        <a
+          href="https://thisispete.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-petu-blue-400 hover:bg-petu-blue-500 text-white font-semibold shadow-kawaii-blue transition-all hover:-translate-y-0.5"
+        >
+          Visit thisispete.org
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

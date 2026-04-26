@@ -1,0 +1,67 @@
+---
+interface Props {
+  class?: string;
+  variant?: "mug" | "shirt" | "pillow" | "sticker" | "lunchbox" | "lipbalm";
+}
+const { class: className = "", variant = "mug" } = Astro.props;
+---
+{variant === "mug" && (
+  <svg class={className} viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="22" y="36" width="64" height="64" rx="10" fill="#ffb6d5" stroke="#3a2a3f" stroke-width="2" />
+    <path d="M 86 52 Q 108 52 108 70 Q 108 88 86 88" fill="none" stroke="#3a2a3f" stroke-width="6" stroke-linecap="round" />
+    <ellipse cx="54" cy="68" rx="3" ry="4" fill="#3a2a3f" />
+    <ellipse cx="74" cy="68" rx="3" ry="4" fill="#3a2a3f" />
+    <ellipse cx="48" cy="78" rx="4" ry="2" fill="#ff7eb8" opacity="0.7" />
+    <ellipse cx="80" cy="78" rx="4" ry="2" fill="#ff7eb8" opacity="0.7" />
+    <path d="M 56 86 Q 64 92 72 86" stroke="#3a2a3f" stroke-width="2" fill="none" stroke-linecap="round" />
+    <path d="M 64 26 L 60 40 L 68 40 Z" fill="#ffd23f" stroke="#f25aa1" stroke-width="1.5" />
+  </svg>
+)}
+{variant === "shirt" && (
+  <svg class={className} viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M 24 44 L 44 28 Q 60 38 76 28 L 96 44 L 86 60 L 78 56 L 78 100 L 42 100 L 42 56 L 34 60 Z" fill="#a8d4ff" stroke="#3a2a3f" stroke-width="2" stroke-linejoin="round" />
+    <path d="M 50 60 L 56 70 L 62 60 L 68 70 L 70 50" stroke="#ffd23f" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round" />
+    <circle cx="58" cy="78" r="3" fill="#ff7eb8" />
+    <circle cx="68" cy="80" r="2" fill="#ffd23f" />
+  </svg>
+)}
+{variant === "pillow" && (
+  <svg class={className} viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M 24 28 Q 60 20 96 28 Q 104 60 96 92 Q 60 100 24 92 Q 16 60 24 28 Z" fill="#fff5b8" stroke="#3a2a3f" stroke-width="2" />
+    <path d="M 56 50 L 60 64 L 64 50 Z" fill="#ffd23f" stroke="#f25aa1" stroke-width="1.5" />
+    <ellipse cx="52" cy="68" rx="2.5" ry="3" fill="#3a2a3f" />
+    <ellipse cx="68" cy="68" rx="2.5" ry="3" fill="#3a2a3f" />
+    <ellipse cx="48" cy="76" rx="3" ry="1.5" fill="#ff95c2" opacity="0.6" />
+    <ellipse cx="72" cy="76" rx="3" ry="1.5" fill="#ff95c2" opacity="0.6" />
+  </svg>
+)}
+{variant === "sticker" && (
+  <svg class={className} viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="60" cy="60" r="42" fill="#e8d8ff" stroke="#3a2a3f" stroke-width="2" stroke-dasharray="4 4" />
+    <path d="M 60 38 L 56 56 L 64 56 Z" fill="#ffd23f" stroke="#f25aa1" stroke-width="1.5" />
+    <ellipse cx="52" cy="64" rx="2.5" ry="3" fill="#3a2a3f" />
+    <ellipse cx="68" cy="64" rx="2.5" ry="3" fill="#3a2a3f" />
+    <path d="M 54 74 Q 60 80 66 74" stroke="#3a2a3f" stroke-width="2" fill="none" stroke-linecap="round" />
+  </svg>
+)}
+{variant === "lunchbox" && (
+  <svg class={className} viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="20" y="40" width="80" height="60" rx="8" fill="#ffd23f" stroke="#3a2a3f" stroke-width="2" />
+    <rect x="48" y="32" width="24" height="12" rx="4" fill="#3a2a3f" />
+    <rect x="52" y="34" width="16" height="6" rx="2" fill="#fffaf6" />
+    <rect x="32" y="58" width="56" height="30" rx="6" fill="#fffaf6" />
+    <path d="M 60 64 L 56 76 L 64 76 Z" fill="#ff7eb8" stroke="#f25aa1" stroke-width="1" />
+    <ellipse cx="54" cy="80" rx="2" ry="2.5" fill="#3a2a3f" />
+    <ellipse cx="66" cy="80" rx="2" ry="2.5" fill="#3a2a3f" />
+  </svg>
+)}
+{variant === "lipbalm" && (
+  <svg class={className} viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="44" y="32" width="32" height="74" rx="6" fill="#ff95c2" stroke="#3a2a3f" stroke-width="2" />
+    <rect x="44" y="32" width="32" height="14" rx="6" fill="#ffd23f" stroke="#3a2a3f" stroke-width="2" />
+    <path d="M 60 56 L 56 68 L 64 68 Z" fill="#fffaf6" />
+    <ellipse cx="54" cy="76" rx="2" ry="2.5" fill="#3a2a3f" />
+    <ellipse cx="66" cy="76" rx="2" ry="2.5" fill="#3a2a3f" />
+    <ellipse cx="60" cy="86" rx="6" ry="3" fill="#fffaf6" opacity="0.5" />
+  </svg>
+)}
