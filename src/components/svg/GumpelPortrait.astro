@@ -12,78 +12,174 @@ const { class: className = "" } = Astro.props;
   aria-label="Kawaii portrait of David Gumpel"
 >
   <!-- shirt (navy chore jacket) -->
-  <path fill="#1f2a4a" d="M 50 400 L 50 330 Q 50 278 112 266 Q 200 254 288 266 Q 350 278 350 330 L 350 400 Z" />
+  <path fill="#1f2a4a" d="M 46 400 L 46 332 Q 46 276 110 264 Q 200 252 290 264 Q 354 276 354 332 L 354 400 Z" />
+  <!-- collar fold (slight darker stitch line) -->
+  <path fill="#162038" d="M 110 320 Q 150 290 200 286 Q 250 290 290 320 L 290 304 Q 250 274 200 270 Q 150 274 110 304 Z" opacity="0.55" />
   <!-- v-neck opening, skin peeking through -->
   <path fill="#fce7d6" d="M 174 268 L 200 308 L 226 268 Q 214 270 200 270 Q 186 270 174 268 Z" />
-  <!-- collar fold -->
+  <!-- collar fold lines -->
   <path fill="none" stroke="#0e1830" stroke-width="3" stroke-linecap="round" d="M 174 268 L 200 308 L 226 268" />
   <!-- shirt button -->
-  <circle cx="200" cy="350" r="4.5" fill="#0e1830" />
+  <circle cx="200" cy="352" r="4.5" fill="#0e1830" />
 
   <!-- neck -->
-  <path fill="#fce7d6" d="M 170 240 Q 170 275 200 280 Q 230 275 230 240 Z" />
-  <!-- neck shadow -->
-  <path fill="#e8c4a0" opacity="0.45" d="M 170 270 Q 200 280 230 270 L 230 280 L 170 280 Z" />
+  <path fill="#fce7d6" d="M 168 240 Q 168 276 200 282 Q 232 276 232 240 Z" />
+  <!-- neck shadow under jaw -->
+  <path fill="#d8b08a" opacity="0.5" d="M 168 268 Q 200 282 232 268 L 232 282 L 168 282 Z" />
 
   <!-- face -->
-  <ellipse cx="200" cy="180" rx="92" ry="105" fill="#fce7d6" />
+  <path fill="#fce7d6" d="
+    M 200 78
+    Q 290 78 294 168
+    Q 296 222 268 254
+    Q 240 282 200 284
+    Q 160 282 132 254
+    Q 104 222 106 168
+    Q 110 78 200 78
+    Z
+  " />
+  <!-- jaw shadow (subtle definition on the sides) -->
+  <path fill="#e8c4a0" opacity="0.45" d="M 110 200 Q 108 250 138 270 Q 122 244 116 210 Z" />
+  <path fill="#e8c4a0" opacity="0.45" d="M 290 200 Q 292 250 262 270 Q 278 244 284 210 Z" />
 
   <!-- ears -->
-  <ellipse cx="110" cy="195" rx="13" ry="20" fill="#fce7d6" />
-  <ellipse cx="290" cy="195" rx="13" ry="20" fill="#fce7d6" />
-  <ellipse cx="112" cy="200" rx="5" ry="11" fill="#e8c4a0" opacity="0.5" />
-  <ellipse cx="288" cy="200" rx="5" ry="11" fill="#e8c4a0" opacity="0.5" />
-  <!-- earring on right ear -->
-  <circle cx="288" cy="218" r="3.6" fill="#cfd6e4" stroke="#3a2a3f" stroke-width="0.8" />
+  <ellipse cx="108" cy="200" rx="13" ry="22" fill="#fce7d6" />
+  <ellipse cx="292" cy="200" rx="13" ry="22" fill="#fce7d6" />
+  <!-- ear inner shadow -->
+  <path fill="#d8b08a" opacity="0.55" d="M 105 198 Q 102 218 110 218 Q 116 210 113 198 Z" />
+  <path fill="#d8b08a" opacity="0.55" d="M 295 198 Q 298 218 290 218 Q 284 210 287 198 Z" />
+  <!-- silver stud earring on right ear -->
+  <circle cx="290" cy="222" r="3.6" fill="#e0e6f0" stroke="#3a2a3f" stroke-width="0.9" />
+  <circle cx="290" cy="221" r="1.2" fill="#fffaf6" opacity="0.9" />
 
-  <!-- hair: short, swept across, undercut hint -->
-  <path fill="#c9a06b" d="M 108 175 Q 94 74 200 72 Q 308 76 292 175 Q 290 144 278 128 Q 268 118 252 122 Q 232 104 200 102 Q 172 102 150 112 Q 132 118 122 130 Q 110 144 108 175 Z" />
-  <!-- hair sweep highlight (the lighter top, the side-part) -->
-  <path fill="#dbb78a" d="M 145 128 Q 180 104 228 110 Q 258 116 272 134 Q 242 122 214 122 Q 178 124 152 132 Q 142 134 145 128 Z" />
-  <!-- side fade (tighter shaved sides hint) -->
-  <path fill="#a8855c" opacity="0.65" d="M 108 178 Q 112 200 132 205 Q 116 195 110 180 Z" />
-  <path fill="#a8855c" opacity="0.65" d="M 292 178 Q 288 200 268 205 Q 284 195 290 180 Z" />
+  <!-- HAIR: textured quiff with subtle spikes ramping right-to-left upward, each leaning left -->
+  <!-- main silhouette: jagged top edge with four peaks (tallest on the left) -->
+  <path fill="#b8915c" d="
+    M 108 178
+    Q 88 120 100 72
+    Q 110 54 125 44
+    Q 130 26 140 22
+    Q 148 30 160 46
+    Q 164 32 172 30
+    Q 180 38 192 50
+    Q 198 38 208 38
+    Q 215 46 224 56
+    Q 232 50 244 50
+    Q 254 62 268 72
+    Q 295 92 308 130
+    Q 314 170 296 178
+    Q 296 142 282 122
+    Q 268 110 248 116
+    Q 228 100 200 100
+    Q 172 102 152 112
+    Q 132 118 122 132
+    Q 112 150 108 178
+    Z
+  " />
+  <!-- mid-tone sweep wave riding under the spike tips -->
+  <path fill="#d4b079" d="
+    M 118 124
+    Q 132 78 158 60
+    Q 188 44 222 50
+    Q 256 58 282 84
+    Q 296 102 300 122
+    Q 280 96 250 84
+    Q 218 74 188 82
+    Q 156 92 134 118
+    Q 124 128 118 124
+    Z
+  " />
+  <!-- highlights on the left-facing edge of each spike (catches light) -->
+  <path fill="#ecd09c" opacity="0.85" d="M 128 52 Q 134 32 140 22 L 140 30 Q 134 42 132 54 Z" />
+  <path fill="#ecd09c" opacity="0.8" d="M 162 44 Q 168 34 172 30 L 172 36 Q 168 42 166 48 Z" />
+  <path fill="#ecd09c" opacity="0.75" d="M 200 48 Q 205 40 208 38 L 208 44 Q 204 50 202 52 Z" />
+  <path fill="#ecd09c" opacity="0.65" d="M 234 56 Q 240 50 244 50 L 244 54 Q 240 58 238 60 Z" />
+  <!-- texture strokes following the leftward sweep -->
+  <path fill="none" stroke="#8a6840" stroke-width="2" stroke-linecap="round" opacity="0.6" d="M 270 88 Q 220 70 168 60" />
+  <path fill="none" stroke="#8a6840" stroke-width="2" stroke-linecap="round" opacity="0.55" d="M 280 110 Q 230 88 180 80" />
+  <path fill="none" stroke="#8a6840" stroke-width="2" stroke-linecap="round" opacity="0.45" d="M 260 128 Q 210 108 158 102" />
+  <path fill="none" stroke="#8a6840" stroke-width="2" stroke-linecap="round" opacity="0.4" d="M 240 144 Q 195 128 142 124" />
+  <!-- side taper (tighter shaved fade hint) -->
+  <path fill="#8a6840" opacity="0.7" d="M 108 178 Q 112 206 134 214 Q 116 200 110 182 Z" />
+  <path fill="#8a6840" opacity="0.7" d="M 292 178 Q 288 206 266 214 Q 284 200 290 182 Z" />
 
-  <!-- light beard / scruff on jaw -->
-  <path fill="#a8855c" opacity="0.42" d="M 130 218 Q 132 268 200 282 Q 268 268 270 218 Q 252 235 230 240 Q 200 250 170 240 Q 148 235 130 218 Z" />
+  <!-- cheek blush (lifted above the beard so it stays visible on the cheekbone) -->
+  <ellipse cx="148" cy="202" rx="13" ry="8" fill="#ffb6d5" opacity="0.55" />
+  <ellipse cx="252" cy="202" rx="13" ry="8" fill="#ffb6d5" opacity="0.55" />
 
-  <!-- cheek blush -->
-  <ellipse cx="148" cy="218" rx="13" ry="8" fill="#ffb6d5" opacity="0.55" />
-  <ellipse cx="252" cy="218" rx="13" ry="8" fill="#ffb6d5" opacity="0.55" />
+  <!-- beard: thick, full, even thickness, edge-to-edge of the face (matches the hair color) -->
+  <path fill="#b8915c" d="
+    M 108 218
+    Q 104 252 132 274
+    Q 166 288 200 288
+    Q 234 288 268 274
+    Q 296 252 292 218
+    Q 270 228 244 230
+    Q 222 232 200 232
+    Q 178 232 156 230
+    Q 130 228 108 218
+    Z
+  " />
+  <!-- subtle beard inner shadow under the chin for shape -->
+  <path fill="#8a6840" opacity="0.55" d="M 170 268 Q 200 282 230 268 Q 222 286 200 288 Q 178 286 170 268 Z" />
 
-  <!-- eyebrows (animatable: raised on hover/click) -->
+  <!-- eyebrows (thicker, slight arch, animatable) -->
   <g data-gumpel-brows>
-    <path d="M 154 167 Q 172 159 190 167" stroke="#8a6840" stroke-width="6" fill="none" stroke-linecap="round" />
-    <path d="M 210 167 Q 228 159 246 167" stroke="#8a6840" stroke-width="6" fill="none" stroke-linecap="round" />
+    <path d="M 152 168 Q 172 156 192 168" stroke="#7a5e38" stroke-width="7" fill="none" stroke-linecap="round" />
+    <path d="M 208 168 Q 228 156 248 168" stroke="#7a5e38" stroke-width="7" fill="none" stroke-linecap="round" />
   </g>
 
-  <!-- left eye (blue iris, dark pupil, kawaii catchlight) -->
+  <!-- left eye: slightly almond, blue iris, dark pupil, catchlight, lash hint -->
   <g data-gumpel-eye="left">
-    <ellipse cx="172" cy="190" rx="8" ry="10" fill="#3a2a3f" />
-    <ellipse cx="172" cy="190" rx="5" ry="6.5" fill="#6ba3d6" />
-    <ellipse cx="172" cy="191" rx="2.5" ry="3.5" fill="#1a1d2e" />
-    <circle cx="174" cy="187" r="2" fill="#fffaf6" />
+    <ellipse cx="172" cy="192" rx="9" ry="10.5" fill="#3a2a3f" />
+    <path d="M 161 187 Q 172 178 183 187" stroke="#3a2a3f" stroke-width="2" fill="none" stroke-linecap="round" />
+    <ellipse cx="172" cy="193" rx="6" ry="7" fill="#6ba3d6" />
+    <ellipse cx="172" cy="193" rx="3" ry="3.8" fill="#1a1d2e" />
+    <circle cx="174" cy="190" r="2.2" fill="#fffaf6" />
   </g>
 
   <!-- right eye -->
   <g data-gumpel-eye="right">
-    <ellipse cx="228" cy="190" rx="8" ry="10" fill="#3a2a3f" />
-    <ellipse cx="228" cy="190" rx="5" ry="6.5" fill="#6ba3d6" />
-    <ellipse cx="228" cy="191" rx="2.5" ry="3.5" fill="#1a1d2e" />
-    <circle cx="230" cy="187" r="2" fill="#fffaf6" />
+    <ellipse cx="228" cy="192" rx="9" ry="10.5" fill="#3a2a3f" />
+    <path d="M 217 187 Q 228 178 239 187" stroke="#3a2a3f" stroke-width="2" fill="none" stroke-linecap="round" />
+    <ellipse cx="228" cy="193" rx="6" ry="7" fill="#6ba3d6" />
+    <ellipse cx="228" cy="193" rx="3" ry="3.8" fill="#1a1d2e" />
+    <circle cx="230" cy="190" r="2.2" fill="#fffaf6" />
   </g>
 
-  <!-- mustache -->
-  <path fill="#a8855c" d="M 165 232 Q 178 224 196 228 Q 200 230 204 228 Q 222 224 235 232 Q 228 240 210 237 Q 200 235 190 237 Q 172 240 165 232 Z" />
+  <!-- mustache: cleaner shape, flows into the beard (matches hair color) -->
+  <path fill="#b8915c" d="
+    M 158 232
+    Q 175 220 195 226
+    Q 200 228 205 226
+    Q 225 220 242 232
+    Q 228 244 208 239
+    Q 200 237 192 239
+    Q 172 244 158 232
+    Z
+  " />
 
-  <!-- mouth: default closed-mouth smile -->
+  <!-- mouth: default confident closed-mouth smile -->
   <g data-gumpel-mouth-default>
-    <path d="M 182 247 Q 200 258 218 247" stroke="#3a2a3f" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 178 248 Q 200 262 222 248" stroke="#3a2a3f" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
   </g>
 
-  <!-- mouth: bigger open grin (revealed on hover/click) -->
+  <!-- mouth: flashy all-teeth grin (revealed on hover/click) -->
   <g data-gumpel-mouth-grin opacity="0">
-    <path d="M 174 245 Q 200 272 226 245 Q 200 256 174 245 Z" fill="#3a2a3f" />
-    <path d="M 182 250 Q 200 264 218 250 Q 200 257 182 250 Z" fill="#fffaf6" />
+    <!-- mouth opening (dark) -->
+    <path d="M 166 244 Q 200 286 234 244 Q 200 262 166 244 Z" fill="#3a2a3f" />
+    <!-- full row of teeth (white) -->
+    <path d="M 172 248 Q 200 280 228 248 Q 200 266 172 248 Z" fill="#fffaf6" />
+    <!-- tooth divider lines -->
+    <line x1="186" y1="252" x2="186" y2="266" stroke="#c8bfb0" stroke-width="0.8" stroke-linecap="round" opacity="0.7" />
+    <line x1="200" y1="252" x2="200" y2="270" stroke="#c8bfb0" stroke-width="0.8" stroke-linecap="round" opacity="0.7" />
+    <line x1="214" y1="252" x2="214" y2="266" stroke="#c8bfb0" stroke-width="0.8" stroke-linecap="round" opacity="0.7" />
+    <!-- shine highlight across the upper teeth -->
+    <ellipse cx="200" cy="253" rx="16" ry="2" fill="#fffaf6" opacity="0.85" />
+    <!-- sparkle (animatable, hovers above the upper-right teeth) -->
+    <g data-gumpel-sparkle>
+      <path d="M 222 240 L 224 246 L 230 248 L 224 250 L 222 256 L 220 250 L 214 248 L 220 246 Z" fill="#ffd23f" stroke="#3a2a3f" stroke-width="0.6" stroke-linejoin="round" />
+      <circle cx="222" cy="248" r="1.4" fill="#fffaf6" />
+    </g>
   </g>
 </svg>

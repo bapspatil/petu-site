@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title = "PETU: People for Ethical Treatment of Unicorns",
-  description = "An independent society advocating for the dignity, image rights, and iconographic restraint owed to unicorns. Founded Geneva, 1824. In partnership with PETE.",
+  description = "An independent society advocating for the dignity, image rights, and iconographic restraint owed to unicorns. Founded Norway, 1824. In partnership with PETE.",
   image = "/og-image.svg",
 } = Astro.props;
 
@@ -36,7 +36,7 @@ const ogImage = new URL(image, Astro.site ?? "https://petu.info").toString();
 
     <meta name="author" content="PETU (People for Ethical Treatment of Unicorns)" />
     <meta name="publisher" content="PETU" />
-    <meta name="keywords" content="PETU, unicorns, satire, kawaii, non-profit, parody, Geneva, 1824, PETE, partnership, iconography, image rights" />
+    <meta name="keywords" content="PETU, unicorns, satire, kawaii, non-profit, parody, Norway, 1824, PETE, partnership, iconography, image rights" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
 
@@ -55,14 +55,14 @@ const ogImage = new URL(image, Astro.site ?? "https://petu.info").toString();
     <meta property="og:image:type" content="image/svg+xml" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="PETU: People for Ethical Treatment of Unicorns. The unicorn is not a pattern. Geneva, 1824." />
+    <meta property="og:image:alt" content="PETU: People for Ethical Treatment of Unicorns. The unicorn is not a pattern. Norway, 1824." />
     <meta property="og:locale" content="en_US" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content="PETU: People for Ethical Treatment of Unicorns. The unicorn is not a pattern. Geneva, 1824." />
+    <meta name="twitter:image:alt" content="PETU: People for Ethical Treatment of Unicorns. The unicorn is not a pattern. Norway, 1824." />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -83,7 +83,7 @@ const ogImage = new URL(image, Astro.site ?? "https://petu.info").toString();
       foundingDate: "1824",
       foundingLocation: {
         "@type": "Place",
-        name: "Geneva, Switzerland",
+        name: "Norway",
       },
       founder: {
         "@type": "Person",

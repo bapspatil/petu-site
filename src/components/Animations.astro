@@ -8,6 +8,44 @@
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  // ---- Helper: split text content into bouncy word spans (preserves nested elements) ----
+  function splitIntoWords(el: HTMLElement): HTMLElement[] {
+    const words: HTMLElement[] = [];
+    function processNode(node: Node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.textContent || "";
+        const fragment = document.createDocumentFragment();
+        text.split(/(\s+)/).forEach((part) => {
+          if (part && part.trim()) {
+            const wrapper = document.createElement("span");
+            wrapper.className = "petu-word";
+            wrapper.style.display = "inline-block";
+            wrapper.style.willChange = "transform, opacity";
+            wrapper.textContent = part;
+            fragment.appendChild(wrapper);
+            words.push(wrapper);
+          } else if (part) {
+            fragment.appendChild(document.createTextNode(part));
+          }
+        });
+        node.parentNode?.replaceChild(fragment, node);
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        const elem = node as Element;
+        if (elem.classList?.contains("petu-word")) return;
+        Array.from(node.childNodes).forEach(processNode);
+      }
+    }
+    Array.from(el.childNodes).forEach(processNode);
+    return words;
+  }
+
+  // Pre-split hero title + subhead so the choreographed timeline (or static fallback) can target them.
+  const heroSection = document.getElementById("hero");
+  const heroH1 = heroSection?.querySelector<HTMLElement>("h1") ?? null;
+  const heroSubhead = heroSection?.querySelector<HTMLElement>(".petu-hero-subhead") ?? null;
+  const heroH1Words = heroH1 ? splitIntoWords(heroH1) : [];
+  const heroSubheadWords = heroSubhead ? splitIntoWords(heroSubhead) : [];
+
   // ---- Hero mascot bob ----
   const mascot = document.getElementById("hero-mascot");
   if (mascot && !reduceMotion) {
@@ -25,6 +63,137 @@
       repeat: -1,
       yoyo: true,
       transformOrigin: "50% 80%",
+    });
+  }
+
+  // ---- Navbar entrance + mobile menu toggle ----
+  const nav = document.getElementById("petu-nav");
+  if (nav) {
+    const navPill = nav.querySelector<HTMLElement>(".petu-nav-pill");
+    const navLogo = nav.querySelector<HTMLElement>(".petu-nav-logo");
+    const navItems = Array.from(nav.querySelectorAll<HTMLElement>(".petu-nav-item"));
+    const navCta = nav.querySelector<HTMLElement>(".petu-nav-cta");
+    const navToggle = nav.querySelector<HTMLElement>(".petu-nav-toggle");
+
+    if (!reduceMotion) {
+      if (navPill) gsap.set(navPill, { y: -90, opacity: 0 });
+      const navInline = [navLogo, ...navItems, navCta, navToggle].filter(Boolean) as HTMLElement[];
+      if (navInline.length) gsap.set(navInline, { opacity: 0, y: -8 });
+
+      const navTl = gsap.timeline({ delay: 0.05 });
+      if (navPill) navTl.to(navPill, { y: 0, opacity: 1, duration: 0.6, ease: "back.out(1.4)" });
+      if (navLogo)
+        navTl.to(navLogo, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.6)" }, "-=0.3");
+      if (navItems.length)
+        navTl.to(navItems, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(1.6)", stagger: 0.06 }, "-=0.25");
+      if (navCta) navTl.to(navCta, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.8)" }, "-=0.15");
+      if (navToggle) navTl.to(navToggle, { opacity: 1, y: 0, duration: 0.3 }, "<");
+    }
+
+    const mobileMenu = document.getElementById("petu-nav-mobile");
+    const navClose = document.getElementById("petu-nav-close");
+    if (navToggle && mobileMenu) {
+      const closeMobile = () => {
+        if (mobileMenu.classList.contains("hidden")) return;
+        navToggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+        if (!reduceMotion) {
+          gsap.to(mobileMenu, {
+            opacity: 0,
+            duration: 0.22,
+            ease: "power1.in",
+            onComplete: () => {
+              mobileMenu.classList.add("hidden");
+              mobileMenu.style.opacity = "";
+            },
+          });
+        } else {
+          mobileMenu.classList.add("hidden");
+        }
+      };
+      const openMobile = () => {
+        mobileMenu.classList.remove("hidden");
+        navToggle.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+        if (!reduceMotion) {
+          gsap.fromTo(mobileMenu, { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power1.out" });
+          const items = mobileMenu.querySelectorAll<HTMLElement>(".petu-nav-mobile-item, .petu-nav-mobile-cta");
+          gsap.fromTo(
+            items,
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.6)", stagger: 0.06, delay: 0.1 }
+          );
+        }
+      };
+      navToggle.addEventListener("click", () => {
+        if (mobileMenu.classList.contains("hidden")) openMobile();
+        else closeMobile();
+      });
+      navClose?.addEventListener("click", closeMobile);
+      mobileMenu.querySelectorAll<HTMLAnchorElement>("a").forEach((link) => {
+        link.addEventListener("click", closeMobile);
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !mobileMenu.classList.contains("hidden")) closeMobile();
+      });
+    }
+  }
+
+  // ---- Hero entrance choreography (staggered timeline on initial load) ----
+  if (heroSection && !reduceMotion) {
+    const heroBadge = heroSection.querySelector<HTMLElement>(".petu-hero-badge");
+    const heroBody = heroSection.querySelector<HTMLElement>(".petu-hero-body");
+    const heroCtas = Array.from(heroSection.querySelectorAll<HTMLElement>(".petu-hero-cta"));
+    const heroStats = Array.from(heroSection.querySelectorAll<HTMLElement>(".petu-hero-stat"));
+
+    const slideUp = [heroBadge, heroBody, ...heroCtas, ...heroStats].filter(Boolean) as HTMLElement[];
+    if (slideUp.length) gsap.set(slideUp, { opacity: 0, y: 20 });
+    if (mascot) gsap.set(mascot, { opacity: 0, scale: 0.85 });
+    if (heroH1Words.length || heroSubheadWords.length) {
+      gsap.set([...heroH1Words, ...heroSubheadWords], { opacity: 0, scale: 0, transformOrigin: "50% 50%" });
+    }
+
+    const tl = gsap.timeline({ delay: 0.15 });
+    if (heroBadge) tl.to(heroBadge, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0);
+    if (heroH1Words.length)
+      tl.to(heroH1Words, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(2.4)", stagger: 0.07 }, 0.18);
+    if (heroSubheadWords.length)
+      tl.to(heroSubheadWords, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2.4)", stagger: 0.04 }, ">-0.2");
+    if (heroBody) tl.to(heroBody, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, ">-0.2");
+    if (heroCtas.length)
+      tl.to(heroCtas, { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.6)", stagger: 0.1 }, ">-0.2");
+    if (mascot) tl.to(mascot, { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.5)" }, "<-0.45");
+    if (heroStats.length)
+      tl.to(heroStats, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", stagger: 0.08 }, ">-0.25");
+
+    // Count-up the hero counters in sync with the stats appearing.
+    Array.from(heroSection.querySelectorAll<HTMLElement>("[data-counter]")).forEach((el) => {
+      const target = Number(el.dataset.target ?? "0");
+      const suffix = el.dataset.suffix ?? "";
+      const obj = { val: 0 };
+      tl.to(
+        obj,
+        {
+          val: target,
+          duration: 1.6,
+          ease: "power2.out",
+          onUpdate: () => {
+            el.textContent = `${Math.round(obj.val).toLocaleString()}${suffix}`;
+          },
+        },
+        "<"
+      );
+    });
+  } else if (heroSection && reduceMotion) {
+    // ensure split words are visible without animation
+    if (heroH1Words.length || heroSubheadWords.length) {
+      gsap.set([...heroH1Words, ...heroSubheadWords], { opacity: 1, scale: 1 });
+    }
+    // ensure counters show their final value
+    heroSection.querySelectorAll<HTMLElement>("[data-counter]").forEach((el) => {
+      const target = Number(el.dataset.target ?? "0");
+      const suffix = el.dataset.suffix ?? "";
+      el.textContent = `${target.toLocaleString()}${suffix}`;
     });
   }
 
@@ -116,10 +285,13 @@
     const brows = founderPortrait.querySelector<SVGGElement>("[data-gumpel-brows]");
     const mouthDefault = founderPortrait.querySelector<SVGGElement>("[data-gumpel-mouth-default]");
     const mouthGrin = founderPortrait.querySelector<SVGGElement>("[data-gumpel-mouth-grin]");
+    const sparkle = founderPortrait.querySelector<SVGGElement>("[data-gumpel-sparkle]");
 
     if (brows && mouthDefault && mouthGrin) {
-      gsap.set(mouthGrin, { transformOrigin: "50% 50%", svgOrigin: "200 256", scale: 0.6 });
+      gsap.set(mouthGrin, { transformOrigin: "50% 50%", svgOrigin: "200 256", scale: 0.6, opacity: 0 });
+      if (sparkle) gsap.set(sparkle, { transformOrigin: "50% 50%", svgOrigin: "222 248", opacity: 0, scale: 0 });
       let gumpelClickReset: number | undefined;
+      let sparklePulse: gsap.core.Tween | undefined;
 
       const reactGumpel = () => {
         gsap.to(brows, { y: -7, duration: 0.25, ease: "back.out(2.2)" });
@@ -131,6 +303,32 @@
           ease: "back.out(2.2)",
           svgOrigin: "200 256",
         });
+        if (sparkle) {
+          sparklePulse?.kill();
+          gsap.fromTo(
+            sparkle,
+            { scale: 0, opacity: 0, rotation: -90 },
+            {
+              scale: 1,
+              opacity: 1,
+              rotation: 0,
+              duration: 0.4,
+              ease: "back.out(2.6)",
+              transformOrigin: "50% 50%",
+              svgOrigin: "222 248",
+            }
+          );
+          sparklePulse = gsap.to(sparkle, {
+            scale: 1.45,
+            duration: 0.55,
+            ease: "sine.inOut",
+            repeat: -1,
+            yoyo: true,
+            delay: 0.4,
+            transformOrigin: "50% 50%",
+            svgOrigin: "222 248",
+          });
+        }
       };
       const restGumpel = () => {
         gsap.to(brows, { y: 0, duration: 0.32, ease: "power2.out" });
@@ -142,6 +340,17 @@
           svgOrigin: "200 256",
         });
         gsap.to(mouthDefault, { opacity: 1, duration: 0.22, delay: 0.06, ease: "power1.out" });
+        if (sparkle) {
+          sparklePulse?.kill();
+          gsap.to(sparkle, {
+            opacity: 0,
+            scale: 0,
+            duration: 0.18,
+            ease: "power1.in",
+            transformOrigin: "50% 50%",
+            svgOrigin: "222 248",
+          });
+        }
       };
 
       founderPortrait.addEventListener("mouseenter", () => {
@@ -192,6 +401,30 @@
       });
     });
   }
+
+  // ---- Word-by-word bubble scale animation on scroll (for titles + subtitles outside hero) ----
+  document.querySelectorAll<HTMLElement>(".petu-words").forEach((el) => {
+    if (heroSection?.contains(el)) return; // hero handles its own words via the entrance timeline
+    const words = splitIntoWords(el);
+    if (!words.length) return;
+    if (reduceMotion) {
+      gsap.set(words, { opacity: 1, scale: 1 });
+      return;
+    }
+    gsap.set(words, { opacity: 0, scale: 0, transformOrigin: "50% 50%" });
+    gsap.to(words, {
+      opacity: 1,
+      scale: 1,
+      duration: 0.55,
+      ease: "back.out(2.4)",
+      stagger: 0.04,
+      scrollTrigger: {
+        trigger: el,
+        start: "top 88%",
+        toggleActions: "play none none none",
+      },
+    });
+  });
 
   // ---- Section reveal on scroll ----
   document.querySelectorAll<HTMLElement>(".petu-reveal").forEach((el) => {
@@ -245,6 +478,7 @@
 
   // ---- Counter tween on enter ----
   document.querySelectorAll<HTMLElement>("[data-counter]").forEach((el) => {
+    if (heroSection?.contains(el)) return; // hero counters are driven by the entrance timeline
     const target = Number(el.dataset.target ?? "0");
     const suffix = el.dataset.suffix ?? "";
     if (reduceMotion) {
@@ -309,7 +543,7 @@
     },
     "Cookie Policy": {
       title: "On cookies.",
-      body: "We set no tracking cookies. We do, however, accept biscuits, which the Geneva office takes with tea at four. The address, regrettably, is in the drawer.",
+      body: "We set no tracking cookies. We do, however, accept biscuits, which the Norway office takes with tea at four. The address, regrettably, is in the drawer.",
     },
     "Press Kit": {
       title: "Press inquiries.",
@@ -317,7 +551,7 @@
     },
     "General Email": {
       title: "Write to us, by all means.",
-      body: "Email reaches the Geneva office reliably enough; we reply when we can, though the post sometimes overtakes us. Address: hello@petu.info. Brevity is appreciated; sincerity, more so.",
+      body: "Email reaches the Norway office reliably enough; we reply when we can, though the post sometimes overtakes us. Address: hello@petu.info. Brevity is appreciated; sincerity, more so.",
     },
     "Press Email": {
       title: "Press inquiries, in writing.",
