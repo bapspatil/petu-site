@@ -1,43 +1,40 @@
-# Astro Starter Kit: Minimal
+# PETU: People for the Ethical Treatment of Unicorns
 
-```sh
-bun create astro@latest -- --template minimal
-```
+She did not consent to the lunchboxes. She did not consent to the mugs. She especially did not consent to the glittery pencil case with her face on it. PETU is an independent society defending the unicorn's image, her meaning, and the slowly vanishing dignity of the horn.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+This is the website. It has pixels and a mascot and feelings.
 
-## 🚀 Project Structure
+Built with Astro, Tailwind, and GSAP, because apparently picking three things is the law now. Deployed to Cloudflare, because someone had to.
 
-Inside of your Astro project, you'll see the following folders and files:
+## What's in the box
 
 ```text
 /
-├── public/
+├── public/        # the stuff that doesn't change (allegedly)
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/  # bits and bobs
+│   ├── layouts/     # bigger bits
+│   ├── pages/       # the URLs you can visit
+│   └── styles/      # vibes, mostly
+├── astro.config.mjs
+└── wrangler.jsonc   # Cloudflare's opinion of you
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Astro looks for `.astro` and `.md` files in `src/pages/`. Each one becomes a route. That's it. That's the whole trick.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## How to make it go
 
-Any static assets, like images, can be placed in the `public/` directory.
+Run these from the project root, like a person:
 
-## 🧞 Commands
+| Command            | What it pretends to do                             |
+| :----------------- | :------------------------------------------------- |
+| `bun install`      | Downloads half the internet                        |
+| `bun dev`          | Spins up a local server on `localhost:4321`        |
+| `bun build`        | Compiles things into `./dist/` for the big leagues |
+| `bun preview`      | Lets you peek at the build before shipping it      |
+| `bun deploy`       | Yeets it onto Cloudflare. Godspeed.                |
+| `bun astro ...`    | Astro CLI commands, for the brave                  |
 
-All commands are run from the root of the project, from a terminal:
+## More words
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+If you want actual documentation, the [Astro docs](https://docs.astro.build) exist and are surprisingly readable. Otherwise, just poke things until they work. That's how the rest of us got here.
